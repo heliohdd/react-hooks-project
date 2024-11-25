@@ -25,7 +25,7 @@ const HookUseState = () => {
   return (
     <div>
       <hr />
-      <h2>Hook Use State</h2>
+      <h2>Comparação do uso do Hook UseState e variáveis</h2>
       <p>Valor da variável userName: {userName}</p>
       <p>Valor do state name: {name}</p>
       <button onClick={changeNames}>Clicar</button>
