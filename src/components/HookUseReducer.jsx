@@ -93,6 +93,7 @@ const HookUseReducer = () => {
         </li>
       ))}
       {/* 3- Exemplo de uso do hook useReducer para funções de adição, subtração e reset */}
+      <h2>Hook Use Reducer para manipular contador</h2>
       <h2>{count}</h2>
       <div>
         <button
