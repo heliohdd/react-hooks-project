@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react";
+import React, { useState, useReducer } from "react";
 
 const HookUseReducer = () => {
   // 1- Uso básico do hook useReducer
@@ -45,6 +45,28 @@ const HookUseReducer = () => {
     dispatchTasks({ type: "DELETE", id });
   };
 
+  // 3- Exemplo de uso do hook useReducer para funções de adição, subtração e reset
+  const initialState = 0;
+
+  const reducer = (state, action) => {
+    switch (action) {
+      case "add":
+        return state + 1;
+      case "sub":
+        return state - 1;
+      case "mult":
+        return state * state;
+      case "div":
+        return state / state;
+      case "reset":
+        return 0;
+      default:
+        throw new Error("Unexpected action");
+    }
+  };
+
+  const [count, dispatchCount] = useReducer(reducer, initialState);
+
   return (
     <div>
       {/* 1- Uso básico do hook useReducer */}
@@ -70,6 +92,45 @@ const HookUseReducer = () => {
           {task.text}
         </li>
       ))}
+      {/* 3- Exemplo de uso do hook useReducer para funções de adição, subtração e reset */}
+      <h2>{count}</h2>
+      <div>
+        <button
+          onClick={() => {
+            dispatchCount("add");
+          }}
+        >
+          Addiction
+        </button>
+        <button
+          onClick={() => {
+            dispatchCount("sub");
+          }}
+        >
+          Subtraction
+        </button>
+        <button
+          onClick={() => {
+            dispatchCount("mult");
+          }}
+        >
+          Multiplication
+        </button>
+        <button
+          onClick={() => {
+            dispatchCount("div");
+          }}
+        >
+          Division
+        </button>
+        <button
+          onClick={() => {
+            dispatchCount("reset");
+          }}
+        >
+          Reset
+        </button>
+      </div>
     </div>
   );
 };
